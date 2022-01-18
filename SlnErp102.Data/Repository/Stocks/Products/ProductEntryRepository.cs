@@ -1,4 +1,5 @@
-﻿using SlnErp102.Core.Models.Stocks.Products;
+﻿using Microsoft.EntityFrameworkCore;
+using SlnErp102.Core.Models.Stocks.Products;
 using SlnErp102.Core.Repository.Stocks.Products;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,16 @@ namespace SlnErp102.Data.Repository.Stocks.Products
         private SlnDbContext SlnDbContext { get => _db as SlnDbContext; }
         public ProductEntryRepository(SlnDbContext db) : base(db)
         {
+        }
+
+        public async Task<IEnumerable<ProductEntry>> DistinctListByCompany()
+        {
+            IEnumerable<ProductEntry> test = await SlnDbContext.ProductEntries
+                .GroupBy(x => x.CompanyId)
+                .Select(g => g.First())
+                .ToListAsync();
+            return test;
+           
         }
     }
 }

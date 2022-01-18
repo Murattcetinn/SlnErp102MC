@@ -2,6 +2,7 @@
 using SlnErp102.Core.Repository;
 using SlnErp102.Core.Service.Stocks.Products;
 using SlnErp102.Core.UnitOfWork;
+using SlnErp102.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,11 @@ namespace SlnErp102.Service.Services.Stocks.Products
     {
         public ProductEntryService(IUnitOfWork unitOfWork, IRepository<ProductEntry> repository) : base(unitOfWork, repository)
         {
+        }
+
+        public async Task<IEnumerable<ProductEntry>> DistinctListByCompany()
+        {
+            return await _unitOfWork.ProductEntryRepo.DistinctListByCompany();
         }
     }
 }

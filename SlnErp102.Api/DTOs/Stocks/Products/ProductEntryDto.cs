@@ -16,4 +16,13 @@
         public DateTime ProductionDate { get; set; }
         public DateTime ExpirationDate { get; set; }
     }
+    public class ProductEntryDistinctDto
+    {
+        public int Id { get; set; }
+        public int CompanyId { get; set; }
+        public string InvoiceNumber { get; set; }
+        public DateTime EntryDate { get; set; }
+        public string Name { get; set; }
+
+    }
 }
