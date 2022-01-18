@@ -58,9 +58,7 @@ IMapper mapper)
             pro.LotSerial = proDto.LotSerial;
             pro.Quantity = proDto.Quantity;
             pro.EntryTypeId = proDto.EntryTypeId;
-            pro.SurgerySide = proDto.SurgerySide;
-            pro.SurgeryType = proDto.SurgeryType;
-            pro.Barcode = proDto.Barcode;
+                   pro.Barcode = proDto.Barcode;
             pro.Description = proDto.Description;           
             pro.EntryDate = proDto.EntryDate;
             pro.ProductionDate = proDto.ProductionDate;
