@@ -26,7 +26,15 @@ namespace SlnErp102.Data.Configuration.Stocks.Products
             builder.Property<DateTime>(s => s.ModifiedOn).HasColumnType("date");
             builder.Property<DateTime>(s => s.EntryDate).HasColumnType("date");
             builder.Property(s => s.ModifiedUser).HasMaxLength(50);
+            //Yontem 3 Cascade islemini degistirmek icin kullanildi
+            builder.HasOne(s => s.Company).WithMany(s => s.ProductEntries).HasForeignKey(s => s.CompanyId)
+             .OnDelete(DeleteBehavior.NoAction);
+
             builder.ToTable("tblProductEntries");
+
+
+         
         }
+     
     }
 }

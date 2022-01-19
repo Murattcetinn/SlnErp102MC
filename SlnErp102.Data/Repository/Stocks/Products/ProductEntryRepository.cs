@@ -18,8 +18,14 @@ namespace SlnErp102.Data.Repository.Stocks.Products
 
         public async Task<IEnumerable<ProductEntry>> DistinctListByCompany()
         {
-            IEnumerable<ProductEntry> test = await SlnDbContext.ProductEntries
-                .GroupBy(x => x.CompanyId)
+            IEnumerable<ProductEntry> test = await SlnDbContext.ProductEntries.Include(x=>x.Company)
+                .GroupBy(x =>new
+                {
+                x.CompanyId,
+                x.InvoiceNumber,
+                x.EntryDate,
+                x.Company.Name
+                })
                 .Select(g => g.First())
                 .ToListAsync();
             return test;

@@ -101,6 +101,18 @@ namespace SlnErp102.Data
             modelBuilder.ApplyConfiguration(new EmployeeDetailSeed());
 
             modelBuilder.ApplyConfiguration(new ProductSeed());
+            modelBuilder.ApplyConfiguration(new ProductEntrySeed());
+            //Yontem-1 Cascade işlemini değiştirmek icin kullanildi.
+            //modelBuilder.Entity<Product>()
+            //  .HasMany(n => n.ProductEntries)
+            //  .WithOne(n => n.Product)
+            //  .OnDelete(DeleteBehavior.NoAction);
+
+            //Yontem 2  Cascade islemini degistirmek icin kullanildi
+            //modelBuilder.Entity<Company>()
+            //    .HasMany(n => n.ProductEntries)
+            //    .WithOne(n => n.Company)
+            //    .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }
