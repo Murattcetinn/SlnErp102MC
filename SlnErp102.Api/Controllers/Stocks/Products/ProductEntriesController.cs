@@ -41,8 +41,19 @@ IMapper mapper, IStockStateService ssService)
 
         }
 
-        // GET: api/ProductEntries/5
-        [HttpGet("{id}")]
+        [HttpGet("a/{ivno}")]
+        public async Task<ActionResult<IEnumerable<ProductEntryDto>>> GetProductEntryByIvno(string ivno)
+        {
+            var result = await _service.GetProductByInvoiceNumber(ivno);
+            return Ok(_mapper.Map<IEnumerable<ProductEntryDto>>(result));
+
+
+        }
+
+
+        // GET: api
+        // /ProductEntries/5
+        [HttpGet("i/{id}")]
         public async Task<ActionResult<ProductEntry>> GetProductEntry(int id)
         {
             var pEntry = await _service.GetByIdAsync(id);

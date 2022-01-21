@@ -24,8 +24,8 @@ IMapper mapper)
         }
         public async Task<IActionResult> Details(string ivno)
         {
-            var a = ivno;
-            return View();
+            var pEntry = await _productEntryApiService.GetProEntryByIvnoAsync(ivno);           
+            return View(_mapper.Map<IEnumerable<ProductEntryDto>>(pEntry));
         }
     }
 }

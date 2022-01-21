@@ -10,5 +10,6 @@ namespace SlnErp102.Core.Repository.Stocks.Products
     public interface IProductEntryRepository:IRepository<ProductEntry>
     {
         Task<IEnumerable<ProductEntry>> DistinctListByCompany();
+        Task<IEnumerable<ProductEntry>> GetProductByInvoiceNumber(string ivno);
     }
 }

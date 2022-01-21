@@ -31,5 +31,11 @@ namespace SlnErp102.Data.Repository.Stocks.Products
             return test;
            
         }
+
+        public async Task<IEnumerable<ProductEntry>> GetProductByInvoiceNumber(string ivno)
+        {
+            var ProList = await SlnDbContext.ProductEntries.Include("Company").Include(t=>t.Product).Where(x => x.InvoiceNumber == ivno).ToListAsync();
+            return ProList;
+        }
     }
 }

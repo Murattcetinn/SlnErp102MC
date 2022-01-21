@@ -28,5 +28,21 @@ namespace SlnErp102.Mvc.ApiService.Stocks.Products
             }
             return pEntryDtos;
         }
+        public async Task<IEnumerable<ProductEntryDto>?> GetProEntryByIvnoAsync(string ivno)
+        {
+            IEnumerable<ProductEntryDto>? pEntryDtos;
+            var response =await _httpClient.GetAsync($"ProductEntries/a/{ivno}");
+            if (response.IsSuccessStatusCode)
+            {
+                pEntryDtos = JsonConvert.DeserializeObject<IEnumerable<ProductEntryDto>>(await response.Content.ReadAsStringAsync());
+
+            }
+            else
+            {
+                pEntryDtos = null;
+
+            }
+            return pEntryDtos;
+        }
     }
 }
